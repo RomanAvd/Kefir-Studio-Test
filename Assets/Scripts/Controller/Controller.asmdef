@@ -1,0 +1,16 @@
+{
+    "name": "Controller",
+    "rootNamespace": "Asteroids.Controller",
+    "references": [
+        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
