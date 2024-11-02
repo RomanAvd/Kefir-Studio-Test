@@ -2,7 +2,8 @@
     "name": "View",
     "rootNamespace": "Asteroids.View",
     "references": [
-        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1"
+        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1",
+        "GUID:11ac81e72163bad4db208747470a9779"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

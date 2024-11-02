@@ -2,8 +2,7 @@
     "name": "Model",
     "rootNamespace": "Asteriods.Model",
     "references": [
-        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1",
-        "GUID:52db6973a7d21b04f9b395e34149cd89"
+        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
