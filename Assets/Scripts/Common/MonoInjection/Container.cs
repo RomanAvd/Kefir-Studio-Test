@@ -9,6 +9,7 @@ namespace Asteroids.Common.MonoInjection
     public interface IContainer
     {
         void ResolveGameObject(GameObject gameObject, bool includeChildren = false);
+        void Resolve(object @object);
     }
 
     public sealed class Container : IContainer
@@ -32,19 +33,19 @@ namespace Asteroids.Common.MonoInjection
                 : gameObject.GetComponents<IGameEntity>();
 
             foreach (var gameEntity in entities)
-                ResolveEntity(gameEntity);
+                Resolve(gameEntity);
         }
 
-        private void ResolveEntity(IGameEntity entity)
+        public void Resolve(object @object)
         {
-            var methods = entity
+            var methods = @object
                           .GetType()
                           .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SuppressChangeType)
                           .Where(m => m.GetCustomAttributes(typeof(Inject), true).Length > 0);
 
             foreach (var methodInfo in methods)
             {
-                methodInfo.Invoke(entity, GetParameters(methodInfo).ToArray());
+                methodInfo.Invoke(@object, GetParameters(methodInfo).ToArray());
             }
         }
 

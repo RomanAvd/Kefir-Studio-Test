@@ -13,7 +13,7 @@ namespace Asteroids.Common.Observer
 
     internal delegate void OnResultReceivedHandler<in T>(T result) where T : IResult;
 
-    internal sealed class Observer : IResultListener, IResultObserver, ITickable
+    public sealed class Observer : IResultListener, IResultObserver, ITickable
     {
         private Dictionary<Type, Dictionary<int,object>> _receivers;
         private Queue<Action> _invokeQueue;
@@ -21,6 +21,7 @@ namespace Asteroids.Common.Observer
 
         public Observer()
         {
+            _receivers = new Dictionary<Type, Dictionary<int, object>>();
             _invokeQueue = new Queue<Action>();
             _nextTickQueue = new Queue<Action>();
         }

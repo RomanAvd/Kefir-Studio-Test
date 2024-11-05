@@ -2,7 +2,9 @@
     "name": "Controller",
     "rootNamespace": "Asteroids.Controller",
     "references": [
-        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1"
+        "GUID:d21f2d64d4bc2e94187cf602f87b2aa1",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:52db6973a7d21b04f9b395e34149cd89"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
