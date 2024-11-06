@@ -18,7 +18,7 @@ namespace Asteroids.View.Ship
 
         public void OnResultReceived(IShipMovementResult result)
         {
-            (transform as RectTransform).anchoredPosition += result.SpeedVector;
+            (transform as RectTransform).anchoredPosition = result.Position;
             _rotationRectTransform.localRotation = Quaternion.AngleAxis(result.Rotation, Vector3.forward);
         }
     }

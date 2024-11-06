@@ -1,29 +1,32 @@
-﻿using Asteroids.Common;
+﻿using Asteriods.Model;
+using Asteriods.Model.Movement;
+using Asteroids.Common;
 using Asteroids.Common.Settings;
 using UnityEngine;
 
 namespace Asteroids.Model.Ship
 {
-    public interface IShipModel
+    public interface IShipModel : IPositionProvider
     {
-        Vector2 SpeedVector { get; }
+        float Speed { get; }
         float RotationAngle { get; }
-        Vector2 Position { get; }
         void UpdateShipMovement(float timeDelta, float rotationAxis, bool thrustEnabled);
     }
 
     public class ShipModel : IShipModel
     {
-        public Vector2 SpeedVector { get; private set; }
+        public float Speed => _speedVector.magnitude;
         public float RotationAngle { get; private set; }
         public Vector2 Position { get; private set; }
 
-
+        private Vector2 _speedVector;
         private readonly IShipSettings _shipSettings;
+        private readonly IScreenBorderModel _screenBorderModel;
 
-        public ShipModel(IShipSettings shipSettings)
+        public ShipModel(IShipSettings shipSettings, IScreenBorderModel screenBorderModel)
         {
             _shipSettings = shipSettings;
+            _screenBorderModel = screenBorderModel;
         }
 
         public void UpdateShipMovement(float timeDelta, float rotationAxis, bool thrustEnabled)
@@ -34,14 +37,14 @@ namespace Asteroids.Model.Ship
             {
 
                 var accelerationVector = new Vector2(0, _shipSettings.AccelerationRate * timeDelta).Rotate(RotationAngle);
-                SpeedVector = Vector2.ClampMagnitude(SpeedVector + accelerationVector, _shipSettings.MaxSpeed);
+                _speedVector = Vector2.ClampMagnitude(_speedVector + accelerationVector, _shipSettings.MaxSpeed);
             }
             else
             {
-                SpeedVector = Vector2.Lerp(SpeedVector, Vector2.zero, _shipSettings.DecelerationRate * timeDelta);
+                _speedVector = Vector2.Lerp(_speedVector, Vector2.zero, _shipSettings.DecelerationRate * timeDelta);
             }
 
-            Position += SpeedVector;
+            Position = _screenBorderModel.UpdateSeamlessPosition(Position + _speedVector);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using Asteroids.Common.Settings;
+using UnityEngine.InputSystem;
 
 namespace Asteroids.Controller.Input
 {
@@ -18,9 +19,9 @@ namespace Asteroids.Controller.Input
         private InputAction _primaryWeaponAction;
         private InputAction _secondaryWeaponAction;
 
-        public PlayerInput(InputActionAsset inputActionAsset)
+        public PlayerInput(IGameSettings settings)
         {
-            _inputActionAsset = inputActionAsset;
+            _inputActionAsset = settings.PlayerInput;
             _inputActionAsset.Enable();
             _thrustAction = _inputActionAsset.FindAction("Thrust");
             _rotationAction = _inputActionAsset.FindAction("Rotation");

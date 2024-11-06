@@ -11,6 +11,8 @@ namespace Asteroids.Common.MonoInjection
     {
         void ResolveGameObject(GameObject gameObject, bool includeChildren = false);
         void Resolve(object @object);
+        void Bind(object @object);
+        T InstantiateAndBind<T>() where T : class;
     }
 
     public sealed class Container : IContainer
@@ -20,6 +22,7 @@ namespace Asteroids.Common.MonoInjection
         public Container()
         {
             _objects = new Dictionary<Type, HashSet<object>>();
+            Bind(new GameObjectFactory(this));
         }
 
         public void Bind(object @object)
@@ -31,6 +34,14 @@ namespace Asteroids.Common.MonoInjection
 
                 _objects[type].Add(@object);
             }
+        }
+
+        public T InstantiateAndBind<T>() where T : class
+        {
+            var ctorParams = typeof(T).GetConstructors().Select(c => c.GetParameters()).First(p => p.Length > 0);
+            var instance = (T)Activator.CreateInstance(typeof(T), GetParameters(ctorParams).ToArray());
+            Bind(instance);
+            return instance;
         }
 
         public void ResolveGameObject(GameObject gameObject, bool includeChildren = false)
@@ -52,13 +63,13 @@ namespace Asteroids.Common.MonoInjection
 
             foreach (var methodInfo in methods)
             {
-                methodInfo.Invoke(@object, GetParameters(methodInfo).ToArray());
+                methodInfo.Invoke(@object, GetParameters(methodInfo.GetParameters()).ToArray());
             }
         }
 
-        private IEnumerable<object> GetParameters(MethodInfo methodInfo)
+        private IEnumerable<object> GetParameters(ParameterInfo[] parameterInfos)
         {
-            foreach (var parameterInfo in methodInfo.GetParameters())
+            foreach (var parameterInfo in parameterInfos)
             {
                 if (parameterInfo.ParameterType.IsGenericType && parameterInfo.ParameterType.GetGenericTypeDefinition().IsAssignableFrom(typeof(IEnumerable<>)))
                 {

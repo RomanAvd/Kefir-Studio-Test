@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Asteriods.Model;
+using Asteriods.Model.Movement;
+using UnityEngine;
 using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
 using Asteroids.Common.Settings;
@@ -20,20 +22,19 @@ namespace Asteroids.Controller
         private void Start()
         {
             _container = new Container();
-            _container.Bind(new GameObjectFactory(_container));
             var observer = new Observer();
-
-            var model = new ShipModel(_gameSettings.ShipSettings);
-            _container.Bind(model);
-            var input = new PlayerInput(_gameSettings.PlayerInput);
-            var shipController = new PlayerShipController(observer, model, input);
-
-
-            _container.Bind(input);
             _container.Bind(observer);
-            _container.Bind(shipController);
+            _container.Bind(_gameSettings);
+
+            ModelInstaller.InstallModels(_container, _gameSettings);
 
             _container.ResolveGameObject(_root, true);
+        }
+
+        private void InstallControllers()
+        {
+            _container.InstantiateAndBind<PlayerInput>();
+            _container.InstantiateAndBind<PlayerShipController>();
         }
     }
 }

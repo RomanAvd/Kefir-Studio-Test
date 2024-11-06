@@ -17,7 +17,7 @@ namespace Asteroids.View.View
             _tickables.AddRange(tickables);
         }
 
-        private void Start()
+        private void Awake()
         {
             _tickables = new List<ITickable>();
         }

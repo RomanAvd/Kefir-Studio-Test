@@ -1,14 +1,21 @@
-﻿using Asteroids.Common.MonoInjection;
+﻿using Asteriods.Model.Movement;
+using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Settings;
 using Asteroids.Model.Ship;
 
-namespace Asteriods.Model.Model
+namespace Asteriods.Model
 {
-    public class ModelInstaller
+    public static class ModelInstaller
     {
-        public void InstallModels(Container container, IGameSettings settings)
+        public static void InstallModels(IContainer container, IGameSettings settings)
         {
-            container.Bind(new ShipModel(settings.ShipSettings));
+            var screenBorderModel = new ScreenBorderModel();
+            container.Bind(screenBorderModel);
+            var shipModel = new ShipModel(settings.ShipSettings, screenBorderModel);
+            container.Bind(shipModel);
+
+            var movementModelFactory = new MovingObjectFactory(shipModel);
+            container.Bind(movementModelFactory);
         }
     }
 }

@@ -23,8 +23,8 @@ namespace Asteroids.Controller.Ship
         public void Tick(float deltaTime)
         {
             _shipModel.UpdateShipMovement(deltaTime, _playerInput.GetRotationAxis(), _playerInput.ThrustPressed());
-            var result = new ShipMovementResult(_shipModel.SpeedVector, _shipModel.RotationAngle);
-            Debug.Log($"rotation {_playerInput.GetRotationAxis()} thrust {_playerInput.ThrustPressed()} ship angle {_shipModel.RotationAngle} ship speed {_shipModel.SpeedVector} position {_shipModel.Position}");
+            var result = new ShipMovementResult(_shipModel.RotationAngle, _shipModel.Position, _shipModel.Speed);
+            Debug.Log($"rotation {_playerInput.GetRotationAxis()} thrust {_playerInput.ThrustPressed()} ship angle {_shipModel.RotationAngle} ship speed {_shipModel.Speed} position {_shipModel.Position}");
             _resultListener.SendResult(result);
         }
     }

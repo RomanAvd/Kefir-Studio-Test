@@ -7,7 +7,7 @@ namespace Asteroids.Common.MonoInjection
         T Instantitiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : MonoBehaviour;
     }
 
-    public sealed class GameObjectFactory : IGameObjectFactory
+    internal sealed class GameObjectFactory : IGameObjectFactory
     {
         private readonly IContainer _container;
 

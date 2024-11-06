@@ -5,19 +5,22 @@ namespace Asteroids.Controller.Ship
 {
     public interface IShipMovementResult : IResult
     {
-        Vector2 SpeedVector { get; }
+        float Speed { get; }
         float Rotation { get; }
+        Vector2 Position { get; }
     }
 
     internal sealed class ShipMovementResult : IShipMovementResult
     {
-        public Vector2 SpeedVector { get; }
+        public float Speed { get; }
         public float Rotation { get; }
+        public Vector2 Position { get; }
 
-        public ShipMovementResult(Vector2 speedVector, float rotation)
+        public ShipMovementResult(float rotation, Vector2 position, float speed)
         {
-            SpeedVector = speedVector;
             Rotation = rotation;
+            Position = position;
+            Speed = speed;
         }
     }
 }
