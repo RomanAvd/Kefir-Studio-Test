@@ -12,21 +12,21 @@ namespace Asteriods.Model.Movement
         void Remove(int id);
     }
 
-    public interface IUpdateMovingObjects
+    public interface IUpdateMovingObjectsModel
     {
         IEnumerable<IMovingObject> MovingObjects { get; }
         void Update(float timeDelta, out IEnumerable<int> removedObjects);
 
     }
 
-    internal sealed class MovingObjectsModel : IMovingObjectsModel, IUpdateMovingObjects
+    internal sealed class MovingObjectsModelModel : IMovingObjectsModel, IUpdateMovingObjectsModel
     {
         private readonly IScreenBorderModel _screenBorderModel;
         private readonly IMovingObjectFactory _movingObjectFactory;
         public IEnumerable<IMovingObject> MovingObjects => _movingObjects.Values;
         private Dictionary<int, IMovingObjectInternal> _movingObjects;
 
-        public MovingObjectsModel(IScreenBorderModel screenBorderModel, IMovingObjectFactory movingObjectFactory)
+        public MovingObjectsModelModel(IScreenBorderModel screenBorderModel, IMovingObjectFactory movingObjectFactory)
         {
             _screenBorderModel = screenBorderModel;
             _movingObjectFactory = movingObjectFactory;

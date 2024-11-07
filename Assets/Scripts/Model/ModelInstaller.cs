@@ -14,8 +14,8 @@ namespace Asteriods.Model
             var shipModel = new ShipModel(settings.ShipSettings, screenBorderModel);
             container.Bind(shipModel);
 
-            var movementModelFactory = new MovingObjectFactory(shipModel);
-            container.Bind(movementModelFactory);
+            var movingObjectFactory = new MovingObjectFactory(shipModel);
+            container.Bind(movingObjectFactory);
         }
     }
 }

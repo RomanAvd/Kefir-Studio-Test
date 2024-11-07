@@ -17,6 +17,6 @@ MonoBehaviour:
     _primaryWeapon: {fileID: 0}
     _secondaryWeapon: {fileID: 0}
     <MaxSpeed>k__BackingField: 0.5
-    <AccelerationRate>k__BackingField: 0.3
-    <DecelerationRate>k__BackingField: 0.6
+    <AccelerationRate>k__BackingField: 0.4
+    <DecelerationRate>k__BackingField: 0.5
     <RotationSpeed>k__BackingField: 90

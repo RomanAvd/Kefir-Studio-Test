@@ -27,6 +27,7 @@ namespace Asteroids.Controller
             _container.Bind(_gameSettings);
 
             ModelInstaller.InstallModels(_container, _gameSettings);
+            InstallControllers();
 
             _container.ResolveGameObject(_root, true);
         }

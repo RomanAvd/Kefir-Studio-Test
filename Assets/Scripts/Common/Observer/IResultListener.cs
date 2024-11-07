@@ -1,4 +1,6 @@
-﻿namespace Asteroids.Common.Observer
+﻿using Asteroids.Common.MonoInjection;
+
+namespace Asteroids.Common.Observer
 {
     public interface IResultListener
     {
