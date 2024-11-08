@@ -21,9 +21,10 @@ namespace Asteroids.View.View.MovingObjects
         }
 
         [Inject]
-        private void Initialize(IGameObjectFactory gameObjectFactory)
+        private void Initialize(IGameObjectFactory gameObjectFactory, IResultObserver observer)
         {
             _gameObjectFactory = gameObjectFactory;
+            observer.Bind(this);
         }
 
         public void OnResultReceived(IMovingObjectsResult result)
@@ -43,7 +44,7 @@ namespace Asteroids.View.View.MovingObjects
                 if (_activeObjects.ContainsKey(activeObject.Id))
                 {
                     _activeObjects[activeObject.Id].UpdatePosition(activeObject.Position);
-                    return;
+                    continue;
                 }
 
                 if (!_pools.ContainsKey(activeObject.ResourceKey))

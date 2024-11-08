@@ -1,12 +1,12 @@
 ﻿using Asteriods.Model;
-using Asteriods.Model.Movement;
 using UnityEngine;
 using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
 using Asteroids.Common.Settings;
+using Asteroids.Controller.Enemies;
 using Asteroids.Controller.Input;
+using Asteroids.Controller.MovingObjects;
 using Asteroids.Controller.Ship;
-using Asteroids.Model.Ship;
 
 namespace Asteroids.Controller
 {
@@ -36,6 +36,8 @@ namespace Asteroids.Controller
         {
             _container.InstantiateAndBind<PlayerInput>();
             _container.InstantiateAndBind<PlayerShipController>();
+            _container.InstantiateAndBind<MovingObjectsController>();
+            _container.InstantiateAndBind<EnemySpawnController>();
         }
     }
 }

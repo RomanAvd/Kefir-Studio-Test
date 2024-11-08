@@ -7,15 +7,11 @@ namespace Asteriods.Model.Movement
         int Id { get; }
         string ResourceKey { get; }
         Vector2 Position { get; }
-    }
-
-    internal interface IMovingObjectInternal : IMovingObject
-    {
         void UpdatePosition(float timeDelta);
         bool SeamlessMovement { get; }
     }
 
-    internal sealed class MovingObject : IMovingObjectInternal
+    internal sealed class MovingObject : IMovingObject
     {
         public int Id { get; }
         public string ResourceKey => _resourceKey;

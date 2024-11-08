@@ -7,6 +7,7 @@ namespace Asteroids.Common.Settings
     {
         InputActionAsset PlayerInput { get; }
         IShipSettings ShipSettings { get; }
+        IEnemySpawnSettings SpawnSettings { get; }
     }
 
     [CreateAssetMenu(menuName = "Asteroids/GameSettings", fileName = "Game Settings")]
@@ -17,7 +18,10 @@ namespace Asteroids.Common.Settings
         [SerializeField]
         private ShipSettings _shipSettings;
 
-        public IShipSettings ShipSettings => _shipSettings;
+        [SerializeField]
+        private EnemySpawnSettings _enemySpawnSettings;
 
+        public IShipSettings ShipSettings => _shipSettings;
+        public IEnemySpawnSettings SpawnSettings => _enemySpawnSettings;
     }
 }

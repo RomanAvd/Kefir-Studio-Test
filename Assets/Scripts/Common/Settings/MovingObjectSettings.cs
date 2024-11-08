@@ -7,7 +7,8 @@ namespace Asteroids.Common.Settings
     public interface IMovingObjectSettings
     {
         string ResourceKey { get; }
-        float Speed { get; }
+        float MinSpeed { get; }
+        float MaxSpeed { get; }
         MovementType Type { get; }
         bool SeamlessMovement { get; }
     }
@@ -18,7 +19,9 @@ namespace Asteroids.Common.Settings
         [field: SerializeField]
         public string ResourceKey { get; private set; }
         [field: SerializeField]
-        public float Speed { get; private set; }
+        public float MinSpeed { get; private set; }
+        [field: SerializeField]
+        public float MaxSpeed { get; private set; }
         [field: SerializeField]
         public MovementType Type { get; private set; }
         [field: SerializeField]

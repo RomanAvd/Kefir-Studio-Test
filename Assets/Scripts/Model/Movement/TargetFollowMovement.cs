@@ -6,17 +6,17 @@ namespace Asteriods.Model.Movement
     {
         private readonly IPositionProvider _target;
 
-        public TargetFollowMovement(Vector2 position, float speed, Vector2 direction, bool seamlessMovement, IPositionProvider target) : base(position, speed, direction, seamlessMovement)
+        public TargetFollowMovement(Vector2 position, float speed, Vector2 direction, bool seamlessMovement,
+                                    ISeamlessPositionHelper seamlessPositionHelper, IPositionProvider target)
+            : base(position, speed, direction, seamlessMovement, seamlessPositionHelper)
         {
             _target = target;
         }
 
-        public override Vector2 UpdatePosition(float timeDelta)
+        protected override void UpdatePositionInternal(float timeDelta)
         {
             var direction = (_target.Position - _position).normalized;
             _position += direction * _speed * timeDelta;
-            return _position;
         }
-
     }
 }

@@ -5,7 +5,7 @@ namespace Asteroids.View.ResourceLoading
 {
     internal static class ResourceLoader
     {
-        private const string MovingObjectsPath = "MovingObjects/";
+        private static string MovingObjectsPath = "MovingObjects/";
 
         public static MovingObject LoadMovingObject(string resourceKey)
         {

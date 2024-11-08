@@ -2,12 +2,16 @@
 
 namespace Asteriods.Model
 {
-    public interface IScreenBorderModel
+    public interface IScreenBorderModel : ISeamlessPositionHelper
     {
-        Vector2 UpdateSeamlessPosition(Vector2 position);
         Vector2 GetRandomOffscreenPosition();
         bool CheckOutOfBounds(Vector2 position);
         void SetBorders(Rect rect);
+    }
+
+    public interface ISeamlessPositionHelper
+    {
+        Vector2 UpdateSeamlessPosition(Vector2 position);
     }
 
     public sealed class ScreenBorderModel : IScreenBorderModel

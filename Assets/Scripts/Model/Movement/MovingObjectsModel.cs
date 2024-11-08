@@ -7,30 +7,22 @@ namespace Asteriods.Model.Movement
 {
     public interface IMovingObjectsModel
     {
+        IEnumerable<IMovingObject> MovingObjects { get; }
         bool TryGetObject(int id, out IMovingObject movingObject);
         IMovingObject Add(IMovingObjectSettings settings, Vector2 position, Vector2 direction);
         void Remove(int id);
     }
 
-    public interface IUpdateMovingObjectsModel
+    internal sealed class MovingObjectsModelModel : IMovingObjectsModel
     {
-        IEnumerable<IMovingObject> MovingObjects { get; }
-        void Update(float timeDelta, out IEnumerable<int> removedObjects);
-
-    }
-
-    internal sealed class MovingObjectsModelModel : IMovingObjectsModel, IUpdateMovingObjectsModel
-    {
-        private readonly IScreenBorderModel _screenBorderModel;
         private readonly IMovingObjectFactory _movingObjectFactory;
         public IEnumerable<IMovingObject> MovingObjects => _movingObjects.Values;
-        private Dictionary<int, IMovingObjectInternal> _movingObjects;
+        private Dictionary<int, IMovingObject> _movingObjects;
 
-        public MovingObjectsModelModel(IScreenBorderModel screenBorderModel, IMovingObjectFactory movingObjectFactory)
+        public MovingObjectsModelModel(IMovingObjectFactory movingObjectFactory)
         {
-            _screenBorderModel = screenBorderModel;
             _movingObjectFactory = movingObjectFactory;
-            _movingObjects = new Dictionary<int, IMovingObjectInternal>();
+            _movingObjects = new Dictionary<int, IMovingObject>();
         }
 
         public bool TryGetObject(int id, out IMovingObject movingObject)
@@ -51,25 +43,6 @@ namespace Asteriods.Model.Movement
         public void Remove(int id)
         {
             _movingObjects.Remove(id);
-        }
-
-        public void Update(float timeDelta, out IEnumerable<int> removedObjects)
-        {
-            var toRemove = new List<int>();
-            removedObjects = toRemove;
-            foreach (var movingObject in _movingObjects)
-            {
-                movingObject.Value.UpdatePosition(timeDelta);
-                if (!movingObject.Value.SeamlessMovement && _screenBorderModel.CheckOutOfBounds(movingObject.Value.Position))
-                {
-                    toRemove.Add(movingObject.Key);
-                }
-            }
-
-            foreach (var objectToRemove in toRemove)
-            {
-                _movingObjects.Remove(objectToRemove);
-            }
         }
     }
 }

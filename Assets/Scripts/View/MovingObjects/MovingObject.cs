@@ -14,6 +14,7 @@ namespace Asteroids.View.View.MovingObjects
     internal sealed class MovingObject : MonoBehaviour, IMovingObject
     {
         public string Key { get; private set; }
+        [SerializeField]
         private RectTransform _rectTransform;
 
         private void Start()
