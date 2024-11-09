@@ -1,7 +1,6 @@
 ﻿using System;
 using Asteroids.Common.Enums;
 using Asteroids.Common.Settings;
-using Asteroids.Model.Ship;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,8 +26,8 @@ namespace Asteriods.Model.Movement
             IMovementModel movementModel = settings.Type switch
             {
                 MovementType.None => throw new NotImplementedException($"Invalid movement type {settings.Type}"),
-                MovementType.Linear => new LinearMovementModel(position, speed, direction, settings.SeamlessMovement, _seamlessPositionHelper),
-                MovementType.Follow => new TargetFollowMovement(position, speed, Vector2.zero, settings.SeamlessMovement, _seamlessPositionHelper),
+                MovementType.Linear => new LinearMovementModel(position, direction, settings, _seamlessPositionHelper),
+                MovementType.Follow => new TargetFollowMovement(position, Vector2.zero, settings, _seamlessPositionHelper),
                 _ => throw new ArgumentOutOfRangeException(nameof(settings.Type), settings.Type, null)
             };
 

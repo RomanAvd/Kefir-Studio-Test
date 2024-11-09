@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Asteroids.Common.Settings;
+using UnityEngine;
 
 namespace Asteriods.Model.Movement
 {
     public sealed class LinearMovementModel : MovementModelBase
     {
-        public LinearMovementModel(Vector2 position, float speed, Vector2 direction, bool seamlessMovement, ISeamlessPositionHelper seamlessPositionHelper) : base(position, speed, direction, seamlessMovement, seamlessPositionHelper)
+        public LinearMovementModel(Vector2 position, Vector2 direction, IMovingObjectSettings settings, ISeamlessPositionHelper seamlessPositionHelper) : base(position, direction, settings, seamlessPositionHelper)
         {
         }
 

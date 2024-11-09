@@ -171,3 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1320662247357520556}
+  _rotationTransform: {fileID: 1320662247357520556}

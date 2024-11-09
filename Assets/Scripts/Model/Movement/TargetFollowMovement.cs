@@ -1,4 +1,5 @@
 ﻿using Asteroids.Common;
+using Asteroids.Common.Settings;
 using UnityEngine;
 
 namespace Asteriods.Model.Movement
@@ -13,9 +14,7 @@ namespace Asteriods.Model.Movement
         private IPositionProvider _target;
         private Vector2 _randomDirection;
 
-        public TargetFollowMovement(Vector2 position, float speed, Vector2 direction, bool seamlessMovement,
-                                    ISeamlessPositionHelper seamlessPositionHelper)
-            : base(position, speed, direction, seamlessMovement, seamlessPositionHelper)
+        public TargetFollowMovement(Vector2 position, Vector2 direction, IMovingObjectSettings settings, ISeamlessPositionHelper seamlessPositionHelper) : base(position, direction, settings, seamlessPositionHelper)
         {
             _randomDirection = RandomHelper.RandomNormalizedVector();
         }

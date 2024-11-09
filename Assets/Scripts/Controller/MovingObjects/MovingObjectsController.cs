@@ -39,7 +39,7 @@ namespace Asteroids.Controller.MovingObjects
             }
 
             var movingObjectsData =
-                _movingObjectsModel.MovingObjects.Select(m => new MovingObjectData(m.MovementModel.Position, m.Id, m.ResourceKey));
+                _movingObjectsModel.MovingObjects.Select(m => new MovingObjectData(m.MovementModel.Position, m.MovementModel.Rotation, m.Id, m.ResourceKey));
             var result = new MovingObjectsResult(movingObjectsData, _toRemoveCache);
             _resultListener.SendResult(result);
         }

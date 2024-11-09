@@ -11,6 +11,7 @@ namespace Asteroids.Common.Settings
         float MaxSpeed { get; }
         MovementType Type { get; }
         bool SeamlessMovement { get; }
+        bool RotateTowardsDirection { get; }
     }
 
     [Serializable]
@@ -28,5 +29,7 @@ namespace Asteroids.Common.Settings
         public bool DestroyOnCollision { get; private set; }
         [field: SerializeField]
         public bool SeamlessMovement { get; private set; }
+        [field: SerializeField]
+        public bool RotateTowardsDirection { get; private set; }
     }
 }

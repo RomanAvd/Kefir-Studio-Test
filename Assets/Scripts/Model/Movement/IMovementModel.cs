@@ -6,6 +6,7 @@ namespace Asteriods.Model.Movement
     {
         Vector2 UpdatePosition(float timeDelta);
         public Vector2 Position { get; }
+        float Rotation { get; }
         bool SeamlessMovement { get; }
     }
 }

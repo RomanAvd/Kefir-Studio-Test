@@ -43,7 +43,7 @@ namespace Asteroids.View.View.MovingObjects
             {
                 if (_activeObjects.ContainsKey(activeObject.Id))
                 {
-                    _activeObjects[activeObject.Id].UpdatePosition(activeObject.Position);
+                    _activeObjects[activeObject.Id].UpdatePosition(activeObject.Position, activeObject.Rotation);
                     continue;
                 }
 
@@ -57,7 +57,7 @@ namespace Asteroids.View.View.MovingObjects
                 }
 
                 var instance = _pools[activeObject.ResourceKey].Get();
-                instance.UpdatePosition(activeObject.Position);
+                instance.UpdatePosition(activeObject.Position, activeObject.Rotation);
                 _activeObjects.Add(activeObject.Id, instance);
             }
 
