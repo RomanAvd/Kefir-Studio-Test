@@ -38,6 +38,7 @@ namespace Asteroids.Controller
             _container.InstantiateAndBind<PlayerShipController>();
             _container.InstantiateAndBind<MovingObjectsController>();
             _container.InstantiateAndBind<EnemySpawnController>();
+            _container.InstantiateAndBind<CollisionController>();
         }
     }
 }

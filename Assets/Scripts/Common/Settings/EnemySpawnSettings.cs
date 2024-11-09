@@ -8,7 +8,7 @@ namespace Asteroids.Common.Settings
     {
         float SpawnDelay { get; }
         int SpawnLimit { get; }
-        int InitialSpawnCount { get; }
+        int MinimumSpawnedEnemies { get; }
         IReadOnlyList<IEnemySpawnData> Enemies { get; }
     }
 
@@ -21,7 +21,7 @@ namespace Asteroids.Common.Settings
         [field: SerializeField]
         public int SpawnLimit { get; private set; }
         [field: SerializeField]
-        public int InitialSpawnCount { get; private set; }
+        public int MinimumSpawnedEnemies { get; private set; }
 
         public IReadOnlyList<IEnemySpawnData> Enemies => _enemies;
 

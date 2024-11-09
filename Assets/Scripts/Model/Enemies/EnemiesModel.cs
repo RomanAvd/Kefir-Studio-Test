@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Asteriods.Model.Movement;
+using Asteriods.Model.Score;
 using Asteroids.Common.Settings;
 using Asteroids.Model.Ship;
 using UnityEngine;
@@ -20,12 +21,14 @@ namespace Asteriods.Model.Enemies
         public int EnemyCount => _enemies.Count;
         private readonly IMovingObjectsSpawner _movingObjectsModel;
         private readonly IShipModel _shipModel;
+        private readonly IScoreModel _scoreModel;
         private Dictionary<int, IEnemy> _enemies;
 
-        public EnemiesModel(IMovingObjectsSpawner movingObjectsModel, IShipModel shipModel)
+        public EnemiesModel(IMovingObjectsSpawner movingObjectsModel, IShipModel shipModel, IScoreModel scoreModel)
         {
             _movingObjectsModel = movingObjectsModel;
             _shipModel = shipModel;
+            _scoreModel = scoreModel;
             _enemies = new Dictionary<int, IEnemy>();
         }
 
@@ -44,6 +47,7 @@ namespace Asteriods.Model.Enemies
             var success = _enemies.ContainsKey(id);
             if (_enemies.ContainsKey(id))
             {
+                _scoreModel.AddScore(_enemies[id].Score);
                 _movingObjectsModel.Remove(id);
                 _enemies.Remove(id);
             }

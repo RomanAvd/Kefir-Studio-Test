@@ -8,5 +8,6 @@ namespace Asteriods.Model.Movement
         public Vector2 Position { get; }
         float Rotation { get; }
         bool SeamlessMovement { get; }
+        bool DestroyOnCollision { get; }
     }
 }

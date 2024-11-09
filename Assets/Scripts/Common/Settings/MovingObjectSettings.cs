@@ -12,6 +12,7 @@ namespace Asteroids.Common.Settings
         MovementType Type { get; }
         bool SeamlessMovement { get; }
         bool RotateTowardsDirection { get; }
+        bool DestroyOnCollision { get; }
     }
 
     [Serializable]

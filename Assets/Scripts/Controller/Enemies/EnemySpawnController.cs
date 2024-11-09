@@ -22,15 +22,19 @@ namespace Asteroids.Controller.Enemies
             _enemiesModel = enemiesModel;
             _screenBorderModel = screenBorderModel;
             _newxtSpawnTime = Time.time;
-
-            for (int i = 0; i < _enemySpawnSettings.InitialSpawnCount; i++)
-            {
-                SpawnRandomEnemy();
-            }
         }
 
         public void Tick(float deltaTime)
         {
+            var minSpawnDelta = _enemySpawnSettings.MinimumSpawnedEnemies - _enemiesModel.EnemyCount;
+            if (minSpawnDelta > 0)
+            {
+                for (int i = 0; i < minSpawnDelta; i++)
+                {
+                    SpawnRandomEnemy();
+                }
+            }
+
             if (Time.time > _newxtSpawnTime && _enemiesModel.EnemyCount < _enemySpawnSettings.SpawnLimit)
             {
                 SpawnRandomEnemy();

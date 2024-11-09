@@ -7,6 +7,7 @@ namespace Asteriods.Model.Movement
     {
         public Vector2 Position => _position;
         public bool SeamlessMovement { get; }
+        public bool DestroyOnCollision { get; }
         public float Rotation { get; private set; }
         protected Vector2 _position;
         protected readonly float _speed;
@@ -22,6 +23,7 @@ namespace Asteriods.Model.Movement
             _seamlessPositionHelper = seamlessPositionHelper;
             _rotateTowardsDirection = settings.RotateTowardsDirection;
             SeamlessMovement = settings.SeamlessMovement;
+            DestroyOnCollision = settings.DestroyOnCollision;
         }
 
         protected abstract void UpdatePositionInternal(float timeDelta);

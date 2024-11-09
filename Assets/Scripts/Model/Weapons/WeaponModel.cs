@@ -46,7 +46,6 @@ namespace Asteriods.Model.Weapons
 
         public void Update()
         {
-            Debug.Log($"weapon: {_weaponSettings} charges {_charges} cooldown {ChargeCooldown}");
             if (_charges == 0 && _chargeCooldownQueue.Count == 0)
             {
                 for (int i = 0; i < _weaponSettings.Charges; i++)
