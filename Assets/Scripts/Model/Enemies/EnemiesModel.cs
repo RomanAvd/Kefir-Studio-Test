@@ -3,6 +3,7 @@ using System.Linq;
 using Asteriods.Model.Movement;
 using Asteriods.Model.Score;
 using Asteroids.Common;
+using Asteroids.Common.Enums;
 using Asteroids.Common.Settings;
 using Asteroids.Model.Ship;
 using UnityEngine;
@@ -47,15 +48,15 @@ namespace Asteriods.Model.Enemies
         public bool TryDestroy(int id)
         {
             var success = _enemies.ContainsKey(id);
-            if (_enemies.TryGetValue(id, out var enemy))
+            if (!_enemies.TryGetValue(id, out var enemy))
+                return success;
+
+            _scoreModel.AddScore(_enemies[id].Score);
+            _movingObjectsModel.Remove(id);
+            _enemies.Remove(id);
+            foreach (var nestedEnemy in enemy.NestedEnemies)
             {
-                _scoreModel.AddScore(_enemies[id].Score);
-                _movingObjectsModel.Remove(id);
-                _enemies.Remove(id);
-                foreach (var nestedEnemy in enemy.NestedEnemies)
-                {
-                    Spawn(nestedEnemy, enemy.MovingObject.MovementModel.Position, RandomHelper.RandomNormalizedVector());
-                }
+                Spawn(nestedEnemy, enemy.MovingObject.MovementModel.Position, RandomHelper.RandomNormalizedVector());
             }
 
             return success;

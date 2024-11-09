@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingObjectSettings:
     <ResourceKey>k__BackingField: ufo
-    <MinSpeed>k__BackingField: 150
-    <MaxSpeed>k__BackingField: 200
+    <MinSpeed>k__BackingField: 200
+    <MaxSpeed>k__BackingField: 240
     <Type>k__BackingField: 2
     <DestroyOnCollision>k__BackingField: 1
     <SeamlessMovement>k__BackingField: 1
+    <RotateTowardsDirection>k__BackingField: 0
   <Score>k__BackingField: 10
+  _nestedEnemies: []

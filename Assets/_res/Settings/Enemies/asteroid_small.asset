@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingObjectSettings:
     <ResourceKey>k__BackingField: asteroid_small
-    <MinSpeed>k__BackingField: 160
-    <MaxSpeed>k__BackingField: 180
+    <MinSpeed>k__BackingField: 180
+    <MaxSpeed>k__BackingField: 200
     <Type>k__BackingField: 1
     <DestroyOnCollision>k__BackingField: 1
     <SeamlessMovement>k__BackingField: 1

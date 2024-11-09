@@ -20,9 +20,10 @@ MonoBehaviour:
     <AccelerationRate>k__BackingField: 0.4
     <DecelerationRate>k__BackingField: 0.5
     <RotationSpeed>k__BackingField: 90
+    <SpawnInvincibilityDuration>k__BackingField: 3
   _enemySpawnSettings:
     <SpawnDelay>k__BackingField: 5
-    <SpawnLimit>k__BackingField: 10
+    <SpawnLimit>k__BackingField: 15
     <MinimumSpawnedEnemies>k__BackingField: 5
     _enemies:
     - _enemy: {fileID: 11400000, guid: d859c112979824440b920f53f86773ef, type: 2}
@@ -31,3 +32,5 @@ MonoBehaviour:
       <Weight>k__BackingField: 20
     - _enemy: {fileID: 11400000, guid: 9a0ec9a1bb65b60489d36de3aaaf2e90, type: 2}
       <Weight>k__BackingField: 80
+    - _enemy: {fileID: 11400000, guid: 76ff50aca9808434ab282ad1ea51b8f4, type: 2}
+      <Weight>k__BackingField: 60

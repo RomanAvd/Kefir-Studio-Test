@@ -4,6 +4,6 @@ namespace Asteriods.Model.Movement
 {
     public interface IPositionProvider
     {
-        Vector2 Position { get; }
+        bool TryGetPosition(out Vector2 position);
     }
 }

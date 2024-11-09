@@ -11,6 +11,7 @@ namespace Asteroids.Common.Settings
         float RotationSpeed { get; }
         IWeaponSettings PrimaryWeapon { get; }
         IWeaponSettings SecondaryWeapon { get; }
+        float SpawnInvincibilityDuration { get; }
     }
 
     [Serializable]
@@ -28,6 +29,8 @@ namespace Asteroids.Common.Settings
         public float DecelerationRate { get; private set; }
         [field: SerializeField]
         public float RotationSpeed { get; private set; }
+        [field: SerializeField]
+        public float SpawnInvincibilityDuration { get; private set; }
 
         public IWeaponSettings PrimaryWeapon => _primaryWeapon;
         public IWeaponSettings SecondaryWeapon => _secondaryWeapon;

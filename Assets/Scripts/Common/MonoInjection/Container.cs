@@ -56,14 +56,23 @@ namespace Asteroids.Common.MonoInjection
 
         public void Resolve(object @object)
         {
-            var methods = @object
-                          .GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+            ResolveRecursive(@object, @object.GetType());
+        }
+
+        private void ResolveRecursive(object @object, Type type)
+        {
+            var methods = type
+                          .GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                           .Where(m => m.GetCustomAttributes(typeof(Inject), true).Length > 0);
 
             foreach (var methodInfo in methods)
             {
                 methodInfo.Invoke(@object, GetParameters(methodInfo.GetParameters()).ToArray());
+            }
+
+            if (type.BaseType != null && typeof(IGameEntity).IsAssignableFrom(type.BaseType))
+            {
+                ResolveRecursive(@object, type.BaseType);
             }
         }
 

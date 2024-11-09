@@ -1,10 +1,11 @@
-﻿using Asteroids.Common;
+﻿using Asteriods.Model.Movement;
+using Asteroids.Common;
+using Asteroids.Common.Enums;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.Observer;
-using Asteroids.Controller.CommonResults;
+using Asteroids.Controller.Common;
 using Asteroids.Controller.Input;
 using Asteroids.Model.Ship;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Asteroids.Controller.Ship
@@ -14,31 +15,33 @@ namespace Asteroids.Controller.Ship
         private readonly IResultListener _resultListener;
         private readonly IShipModel _shipModel;
         private readonly IPlayerInput _playerInput;
+        private readonly IMovingObjectsModel _movingObjectsModel;
 
-        public PlayerShipController(IResultListener resultListener, IShipModel shipModel, IPlayerInput playerInput)
+        public PlayerShipController(IResultListener resultListener, IShipModel shipModel, IPlayerInput playerInput, IMovingObjectsModel movingObjectsModel)
         {
             _resultListener = resultListener;
             _shipModel = shipModel;
             _playerInput = playerInput;
+            _movingObjectsModel = movingObjectsModel;
         }
 
         public void Tick(float deltaTime)
         {
-            _shipModel.UpdateShipMovement(deltaTime, _playerInput.GetRotationAxis(), _playerInput.ThrustPressed());
-            _shipModel.PrimaryWeapon.Update();
-            _shipModel.SecondaryWeapon.Update();
+            if (_shipModel.Status is ShipStatus.Dead or ShipStatus.None)
+                return;
 
-            if (_playerInput.PrimaryPressed())
-            {
-                _shipModel.PrimaryWeapon.TryShoot(_shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
-            }
-            if (_playerInput.SecondaryPressed())
-            {
-                _shipModel.SecondaryWeapon.TryShoot(_shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
-            }
-            _resultListener.SendResult(new UpdateWeaponResult(_shipModel.SecondaryWeapon.Charges, _shipModel.SecondaryWeapon.ChargeCooldown, _shipModel.SecondaryWeapon.CooldownRemaining));
+            _shipModel.UpdateShip(deltaTime, _playerInput.GetRotationAxis(), _playerInput.ThrustPressed());
 
-            var result = new ShipMovementResult(_shipModel.RotationAngle, _shipModel.Position, _shipModel.Speed);
+            if (_playerInput.PrimaryPressed() && _shipModel.TryShootPrimary(out var projectile))
+            {
+                _movingObjectsModel.Add(projectile.MovingObjectSettings, _shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
+            }
+            if (_playerInput.SecondaryPressed() && _shipModel.TryShootSecondary(out projectile))
+            {
+                _movingObjectsModel.Add(projectile.MovingObjectSettings, _shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
+            }
+
+            var result = ResultFactory.GetUpdateShipResult(_shipModel);
             _resultListener.SendResult(result);
         }
     }

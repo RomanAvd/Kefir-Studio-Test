@@ -1,4 +1,5 @@
 ﻿using Asteriods.Model;
+using Asteroids.Common.Enums;
 using UnityEngine;
 using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
@@ -8,9 +9,9 @@ using Asteroids.Controller.Input;
 using Asteroids.Controller.MovingObjects;
 using Asteroids.Controller.Ship;
 
-namespace Asteroids.Controller
+namespace Asteroids.Controller.Game
 {
-    internal sealed class GameController : MonoBehaviour
+    internal sealed class InitGameController : MonoBehaviour
     {
         [SerializeField]
         private GameObject _root;
@@ -30,6 +31,8 @@ namespace Asteroids.Controller
             InstallControllers();
 
             _container.ResolveGameObject(_root, true);
+
+            observer.SendResult(new StateResult(GameState.MainMenu));
         }
 
         private void InstallControllers()
@@ -39,6 +42,7 @@ namespace Asteroids.Controller
             _container.InstantiateAndBind<MovingObjectsController>();
             _container.InstantiateAndBind<EnemySpawnController>();
             _container.InstantiateAndBind<CollisionController>();
+            _container.InstantiateAndBind<GameOverController>();
         }
     }
 }

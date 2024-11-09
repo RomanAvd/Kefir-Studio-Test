@@ -1,7 +1,6 @@
 ﻿using Asteriods.Model.Enemies;
 using Asteriods.Model.Movement;
 using Asteriods.Model.Score;
-using Asteriods.Model.Weapons;
 using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Settings;
 using Asteroids.Model.Ship;
@@ -14,19 +13,17 @@ namespace Asteriods.Model
         {
             var screenBorderModel = new ScreenBorderModel();
             container.Bind(screenBorderModel);
-            var scoreModel = new ScoreModel();
-            container.Bind(scoreModel);
 
             var movingObjectFactory = new MovingObjectFactory(screenBorderModel);
             container.Bind(movingObjectFactory);
             var movingObjectsModel = new MovingObjectsModelModel(movingObjectFactory);
             container.Bind(movingObjectsModel);
-            var weaponFactory = new WeaponModelFactory(movingObjectsModel);
-            container.Bind(weaponFactory);
 
-            var shipModel = new ShipModel(settings.ShipSettings, screenBorderModel, weaponFactory);
+            var shipModel = new ShipModel(settings.ShipSettings, screenBorderModel);
             container.Bind(shipModel);
 
+            var scoreModel = new ScoreModel(shipModel);
+            container.Bind(scoreModel);
             var enemiesModel = new EnemiesModel(movingObjectsModel, shipModel, scoreModel);
             container.Bind(enemiesModel);
         }

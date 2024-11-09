@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cac5e2085804e4cbd6de08360dd68f3, type: 3}
-  m_Name: asteroid_medium
+  m_Name: asteroid_big
   m_EditorClassIdentifier: 
   _movingObjectSettings:
-    <ResourceKey>k__BackingField: asteroid_medium
-    <MinSpeed>k__BackingField: 120
-    <MaxSpeed>k__BackingField: 180
+    <ResourceKey>k__BackingField: asteroid_big
+    <MinSpeed>k__BackingField: 100
+    <MaxSpeed>k__BackingField: 160
     <Type>k__BackingField: 1
     <DestroyOnCollision>k__BackingField: 1
     <SeamlessMovement>k__BackingField: 1
     <RotateTowardsDirection>k__BackingField: 0
   <Score>k__BackingField: 10
   _nestedEnemies:
-  - {fileID: 11400000, guid: d859c112979824440b920f53f86773ef, type: 2}
-  - {fileID: 11400000, guid: d859c112979824440b920f53f86773ef, type: 2}
+  - {fileID: 11400000, guid: 9a0ec9a1bb65b60489d36de3aaaf2e90, type: 2}
+  - {fileID: 11400000, guid: 9a0ec9a1bb65b60489d36de3aaaf2e90, type: 2}

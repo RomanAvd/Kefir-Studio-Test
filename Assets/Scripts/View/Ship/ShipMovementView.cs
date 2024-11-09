@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace Asteroids.View.Ship
 {
-    internal class ShipView : MonoBehaviour, IResultReceiver<IShipMovementResult>, IGameEntity
+    internal class ShipMovementView : MonoBehaviour, IResultReceiver<IShipMovementResult>
     {
         [SerializeField]
         private RectTransform _rotationRectTransform;
+
+        [SerializeField]
+        private RectTransform _positionRectTransform;
 
         [Inject]
         private void Initialize(IResultObserver observer)
@@ -18,7 +21,7 @@ namespace Asteroids.View.Ship
 
         public void OnResultReceived(IShipMovementResult result)
         {
-            (transform as RectTransform).anchoredPosition = result.Position;
+            _positionRectTransform.anchoredPosition = result.Position;
             _rotationRectTransform.localRotation = Quaternion.AngleAxis(result.Rotation, Vector3.forward);
         }
     }

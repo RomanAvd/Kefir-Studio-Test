@@ -1,6 +1,7 @@
 ﻿using Asteriods.Model.Enemies;
 using Asteriods.Model.Movement;
 using Asteriods.Model.Score;
+using Asteroids.Common.Enums;
 using Asteroids.Common.Observer;
 using Asteroids.Controller.CommonResults;
 using Asteroids.Model.Ship;
@@ -18,30 +19,28 @@ namespace Asteroids.Controller
         private readonly IResultListener _listener;
         private readonly IEnemiesModel _enemiesModel;
         private readonly IMovingObjectsModel _movingObjectsModel;
-        private readonly IScoreModel _scoreModel;
         private readonly IShipModel _shipModel;
+        private readonly IScoreModel _scoreModel;
 
         public CollisionController(IResultListener listener,
                                    IEnemiesModel enemiesModel,
                                    IMovingObjectsModel movingObjectsModel,
-                                   IScoreModel scoreModel,
-                                   IShipModel shipModel)
+                                   IShipModel shipModel,
+                                   IScoreModel scoreModel)
         {
             _listener = listener;
             _enemiesModel = enemiesModel;
             _movingObjectsModel = movingObjectsModel;
-            _scoreModel = scoreModel;
             _shipModel = shipModel;
+            _scoreModel = scoreModel;
         }
 
         public void OnCollision(int id)
         {
-            Debug.Log($"collision {id}");
             if (_enemiesModel.TryDestroy(id))
             {
-                Debug.Log("enemy");
-                _listener.SendResult(new UpdateScoreResult(_scoreModel.Score));
                 _listener.SendResult(new ObjectDestroyedResult(id));
+                _listener.SendResult(new UpdateScoreResult(_scoreModel.Score));
                 return;
             }
 

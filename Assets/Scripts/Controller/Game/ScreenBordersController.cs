@@ -3,7 +3,7 @@ using Asteriods.Model;
 using Asteroids.Common.MonoInjection;
 using UnityEngine;
 
-namespace Asteroids.Controller
+namespace Asteroids.Controller.Game
 {
     internal class ScreenBordersController : MonoBehaviour, IGameEntity
     {
