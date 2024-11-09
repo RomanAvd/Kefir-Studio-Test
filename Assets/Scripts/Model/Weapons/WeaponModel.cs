@@ -10,6 +10,7 @@ namespace Asteriods.Model.Weapons
     {
         int Charges { get; }
         float ChargeCooldown { get; }
+        float CooldownRemaining { get; }
         bool TryShoot(Vector2 position, Vector2 direction);
         void Update();
     }
@@ -17,7 +18,8 @@ namespace Asteriods.Model.Weapons
     internal sealed class WeaponModel : IWeaponModel
     {
         public int Charges => _charges;
-        public float ChargeCooldown => _chargeCooldownQueue.TryPeek(out var cooldown) ? cooldown - Time.time : 0;
+        public float ChargeCooldown => _weaponSettings.FireCooldown;
+        public float CooldownRemaining => _chargeCooldownQueue.TryPeek(out var cooldown) ? cooldown - Time.time : 0;
         private readonly IWeaponSettings _weaponSettings;
         private readonly IMovingObjectsSpawner _movingObjectsModel;
         private int _charges;

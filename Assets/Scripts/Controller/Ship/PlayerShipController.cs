@@ -1,6 +1,7 @@
 ﻿using Asteroids.Common;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.Observer;
+using Asteroids.Controller.CommonResults;
 using Asteroids.Controller.Input;
 using Asteroids.Model.Ship;
 using UnityEditorInternal;
@@ -35,6 +36,7 @@ namespace Asteroids.Controller.Ship
             {
                 _shipModel.SecondaryWeapon.TryShoot(_shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
             }
+            _resultListener.SendResult(new UpdateWeaponResult(_shipModel.SecondaryWeapon.Charges, _shipModel.SecondaryWeapon.ChargeCooldown, _shipModel.SecondaryWeapon.CooldownRemaining));
 
             var result = new ShipMovementResult(_shipModel.RotationAngle, _shipModel.Position, _shipModel.Speed);
             _resultListener.SendResult(result);
