@@ -1,4 +1,5 @@
-﻿using Asteroids.Common.Interfaces;
+﻿using Asteroids.Common;
+using Asteroids.Common.Interfaces;
 using Asteroids.Common.Observer;
 using Asteroids.Controller.Input;
 using Asteroids.Model.Ship;
@@ -23,6 +24,18 @@ namespace Asteroids.Controller.Ship
         public void Tick(float deltaTime)
         {
             _shipModel.UpdateShipMovement(deltaTime, _playerInput.GetRotationAxis(), _playerInput.ThrustPressed());
+            _shipModel.PrimaryWeapon.Update();
+            _shipModel.SecondaryWeapon.Update();
+
+            if (_playerInput.PrimaryPressed())
+            {
+                _shipModel.PrimaryWeapon.TryShoot(_shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
+            }
+            if (_playerInput.SecondaryPressed())
+            {
+                _shipModel.SecondaryWeapon.TryShoot(_shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
+            }
+
             var result = new ShipMovementResult(_shipModel.RotationAngle, _shipModel.Position, _shipModel.Speed);
             Debug.Log($"rotation {_playerInput.GetRotationAxis()} thrust {_playerInput.ThrustPressed()} ship angle {_shipModel.RotationAngle} ship speed {_shipModel.Speed} position {_shipModel.Position}");
             _resultListener.SendResult(result);

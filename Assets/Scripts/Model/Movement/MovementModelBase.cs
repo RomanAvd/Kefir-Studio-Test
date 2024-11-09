@@ -4,6 +4,7 @@ namespace Asteriods.Model.Movement
 {
     public abstract class MovementModelBase : IMovementModel
     {
+        public Vector2 Position => _position;
         public bool SeamlessMovement { get; }
         protected Vector2 _position;
         protected readonly float _speed;
@@ -28,5 +29,6 @@ namespace Asteriods.Model.Movement
                 _position = _seamlessPositionHelper.UpdateSeamlessPosition(_position);
             return _position;
         }
+
     }
 }

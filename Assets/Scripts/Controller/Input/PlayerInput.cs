@@ -46,7 +46,7 @@ namespace Asteroids.Controller.Input
 
         public bool SecondaryPressed()
         {
-            return _secondaryWeaponAction.IsPressed();
+            return _secondaryWeaponAction.WasPerformedThisFrame();
         }
     }
 }

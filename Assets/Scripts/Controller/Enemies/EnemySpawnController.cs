@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Asteriods.Model;
 using Asteriods.Model.Enemies;
+using Asteroids.Common;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.Settings;
 using UnityEngine;
@@ -38,7 +39,7 @@ namespace Asteroids.Controller.Enemies
 
         private void SpawnRandomEnemy()
         {
-            _enemiesModel.Spawn(RollEnemy(), _screenBorderModel.GetRandomOffscreenPosition(), RollDirection());
+            _enemiesModel.Spawn(RollEnemy(), _screenBorderModel.GetRandomOffscreenPosition(), RandomHelper.RandomNormalizedVector());
             _newxtSpawnTime = Time.time + _enemySpawnSettings.SpawnDelay;
         }
 
@@ -55,11 +56,6 @@ namespace Asteroids.Controller.Enemies
             }
 
             return null;
-        }
-
-        private Vector2 RollDirection()
-        {
-            return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         }
     }
 }

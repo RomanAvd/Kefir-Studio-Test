@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Laser weapon
   m_EditorClassIdentifier: 
   _projectile: {fileID: 11400000, guid: 9549ca3ef5fe0034e87a9fdf69c7421f, type: 2}
-  <FireCooldown>k__BackingField: 15
+  <FireCooldown>k__BackingField: 5
   <Charges>k__BackingField: 3

@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Asteroids.Common.Settings;
+using Asteroids.Model.Ship;
 using UnityEngine;
 
 namespace Asteriods.Model.Movement
 {
-    public interface IMovingObjectsModel
+    public interface IMovingObjectsModel : IMovingObjectsSpawner
     {
         IEnumerable<IMovingObject> MovingObjects { get; }
         bool TryGetObject(int id, out IMovingObject movingObject);
+    }
+
+    public interface IMovingObjectsSpawner
+    {
         IMovingObject Add(IMovingObjectSettings settings, Vector2 position, Vector2 direction);
         void Remove(int id);
     }

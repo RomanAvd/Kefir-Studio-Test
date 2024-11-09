@@ -14,12 +14,10 @@ namespace Asteriods.Model.Movement
 
     internal sealed class MovingObjectFactory : IMovingObjectFactory
     {
-        private readonly IShipModel _shipModel;
         private readonly ISeamlessPositionHelper _seamlessPositionHelper;
 
-        public MovingObjectFactory(IShipModel shipModel, ISeamlessPositionHelper seamlessPositionHelper)
+        public MovingObjectFactory(ISeamlessPositionHelper seamlessPositionHelper)
         {
-            _shipModel = shipModel;
             _seamlessPositionHelper = seamlessPositionHelper;
         }
 
@@ -30,7 +28,7 @@ namespace Asteriods.Model.Movement
             {
                 MovementType.None => throw new NotImplementedException($"Invalid movement type {settings.Type}"),
                 MovementType.Linear => new LinearMovementModel(position, speed, direction, settings.SeamlessMovement, _seamlessPositionHelper),
-                MovementType.Follow => new TargetFollowMovement(position, speed, Vector2.zero, settings.SeamlessMovement, _seamlessPositionHelper, _shipModel),
+                MovementType.Follow => new TargetFollowMovement(position, speed, Vector2.zero, settings.SeamlessMovement, _seamlessPositionHelper),
                 _ => throw new ArgumentOutOfRangeException(nameof(settings.Type), settings.Type, null)
             };
 

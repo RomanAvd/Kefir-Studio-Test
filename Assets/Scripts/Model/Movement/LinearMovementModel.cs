@@ -10,7 +10,7 @@ namespace Asteriods.Model.Movement
 
         protected override void UpdatePositionInternal(float timeDelta)
         {
-            _position += _direction.normalized * _speed * timeDelta;
+            _position += _direction * _speed * timeDelta;
         }
     }
 }

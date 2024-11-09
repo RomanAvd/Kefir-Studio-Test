@@ -6,17 +6,14 @@ namespace Asteriods.Model.Movement
     {
         int Id { get; }
         string ResourceKey { get; }
-        Vector2 Position { get; }
-        void UpdatePosition(float timeDelta);
-        bool SeamlessMovement { get; }
+        IMovementModel MovementModel { get; }
     }
 
     internal sealed class MovingObject : IMovingObject
     {
         public int Id { get; }
         public string ResourceKey => _resourceKey;
-        public Vector2 Position { get; private set; }
-        public bool SeamlessMovement => _movementModel.SeamlessMovement;
+        public IMovementModel MovementModel => _movementModel;
 
         private readonly string _resourceKey;
         private readonly IMovementModel _movementModel;
@@ -27,11 +24,5 @@ namespace Asteriods.Model.Movement
             _resourceKey = resourceKey;
             _movementModel = movementModel;
         }
-
-        public void UpdatePosition(float timeDelta)
-        {
-            Position = _movementModel.UpdatePosition(timeDelta);
-        }
-
     }
 }

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5abe47d764b77be2ae3bcbecb29e4, type: 3}
   m_Name: bullet
   m_EditorClassIdentifier: 
-  <Key>k__BackingField: bullet
-  <Speed>k__BackingField: 1
-  <DestroyOnCollision>k__BackingField: 1
+  _movingObjectSettings:
+    <ResourceKey>k__BackingField: bullet
+    <MinSpeed>k__BackingField: 300
+    <MaxSpeed>k__BackingField: 300
+    <Type>k__BackingField: 1
+    <DestroyOnCollision>k__BackingField: 1
+    <SeamlessMovement>k__BackingField: 0

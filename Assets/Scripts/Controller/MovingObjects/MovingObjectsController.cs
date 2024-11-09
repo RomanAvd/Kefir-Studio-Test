@@ -26,8 +26,8 @@ namespace Asteroids.Controller.MovingObjects
             _toRemoveCache.Clear();
             foreach (var movingObject in _movingObjectsModel.MovingObjects)
             {
-                movingObject.UpdatePosition(deltaTime);
-                if (!movingObject.SeamlessMovement && _screenBorderModel.CheckOutOfBounds(movingObject.Position))
+                movingObject.MovementModel.UpdatePosition(deltaTime);
+                if (!movingObject.MovementModel.SeamlessMovement && _screenBorderModel.CheckOutOfBounds(movingObject.MovementModel.Position))
                 {
                     _toRemoveCache.Add(movingObject.Id);
                 }
@@ -39,7 +39,7 @@ namespace Asteroids.Controller.MovingObjects
             }
 
             var movingObjectsData =
-                _movingObjectsModel.MovingObjects.Select(m => new MovingObjectData(m.Position, m.Id, m.ResourceKey));
+                _movingObjectsModel.MovingObjects.Select(m => new MovingObjectData(m.MovementModel.Position, m.Id, m.ResourceKey));
             var result = new MovingObjectsResult(movingObjectsData, _toRemoveCache);
             _resultListener.SendResult(result);
         }

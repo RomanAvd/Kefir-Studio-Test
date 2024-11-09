@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5abe47d764b77be2ae3bcbecb29e4, type: 3}
   m_Name: laser
   m_EditorClassIdentifier: 
-  <Key>k__BackingField: laser
-  <Speed>k__BackingField: 2
-  <DestroyOnCollision>k__BackingField: 0
+  _movingObjectSettings:
+    <ResourceKey>k__BackingField: laser
+    <MinSpeed>k__BackingField: 400
+    <MaxSpeed>k__BackingField: 400
+    <Type>k__BackingField: 1
+    <DestroyOnCollision>k__BackingField: 0
+    <SeamlessMovement>k__BackingField: 0

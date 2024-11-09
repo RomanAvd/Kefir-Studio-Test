@@ -4,9 +4,9 @@ namespace Asteriods.Model
 {
     public interface IScreenBorderModel : ISeamlessPositionHelper
     {
-        Vector2 GetRandomOffscreenPosition();
         bool CheckOutOfBounds(Vector2 position);
         void SetBorders(Rect rect);
+        Vector2 GetRandomOffscreenPosition();
     }
 
     public interface ISeamlessPositionHelper
