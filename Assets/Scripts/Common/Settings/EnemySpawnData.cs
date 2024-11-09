@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Asteroids.Common.Settings
@@ -7,6 +8,7 @@ namespace Asteroids.Common.Settings
     {
         IEnemySettings Enemy { get; }
         int Weight { get; }
+
     }
 
     [Serializable]
@@ -14,10 +16,10 @@ namespace Asteroids.Common.Settings
     {
         [SerializeField]
         private EnemySettings _enemy;
-
-        public IEnemySettings Enemy => _enemy;
-
         [field: SerializeField]
         public int Weight { get; private set; }
+        public IEnemySettings Enemy => _enemy;
+
+
     }
 }

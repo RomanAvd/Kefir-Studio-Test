@@ -26,6 +26,8 @@ MonoBehaviour:
     <MinimumSpawnedEnemies>k__BackingField: 5
     _enemies:
     - _enemy: {fileID: 11400000, guid: d859c112979824440b920f53f86773ef, type: 2}
-      <Weight>k__BackingField: 80
+      <Weight>k__BackingField: 40
     - _enemy: {fileID: 11400000, guid: 0e82874f55fb6a0419ac6fedb8f821cd, type: 2}
+      <Weight>k__BackingField: 20
+    - _enemy: {fileID: 11400000, guid: 9a0ec9a1bb65b60489d36de3aaaf2e90, type: 2}
       <Weight>k__BackingField: 80
