@@ -16,8 +16,8 @@ MonoBehaviour:
   _shipSettings:
     _primaryWeapon: {fileID: 11400000, guid: a220f27d8216dc74a95fc6c0aac9b80d, type: 2}
     _secondaryWeapon: {fileID: 11400000, guid: 6031c408d5cb27f479d96c4ee007db3a, type: 2}
-    <MaxSpeed>k__BackingField: 0.5
-    <AccelerationRate>k__BackingField: 0.4
+    <MaxSpeed>k__BackingField: 0.7
+    <AccelerationRate>k__BackingField: 0.55
     <DecelerationRate>k__BackingField: 0.5
     <RotationSpeed>k__BackingField: 90
     <SpawnInvincibilityDuration>k__BackingField: 3

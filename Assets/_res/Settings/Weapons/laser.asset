@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingObjectSettings:
     <ResourceKey>k__BackingField: laser
-    <MinSpeed>k__BackingField: 800
-    <MaxSpeed>k__BackingField: 800
+    <MinSpeed>k__BackingField: 1100
+    <MaxSpeed>k__BackingField: 1100
     <Type>k__BackingField: 1
     <DestroyOnCollision>k__BackingField: 0
     <SeamlessMovement>k__BackingField: 0

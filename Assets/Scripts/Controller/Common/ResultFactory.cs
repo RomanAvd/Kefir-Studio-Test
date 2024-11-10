@@ -5,7 +5,7 @@ namespace Asteroids.Controller.Common
 {
     internal static class ResultFactory
     {
-        internal static IUpdateShipResult GetUpdateShipResult(IShipModel shipModel)
+        internal static IUpdateShipResult GetUpdateShipResult(IShipModel shipModel, bool thrustEnabled)
         {
             return new UpdateShipResult(
                 shipModel.RotationAngle,
@@ -14,7 +14,8 @@ namespace Asteroids.Controller.Common
                 shipModel.Status,
                 shipModel.SecondaryWeapon.Charges,
                 shipModel.SecondaryWeapon.ChargeCooldown,
-                shipModel.SecondaryWeapon.CooldownRemaining);
+                shipModel.SecondaryWeapon.CooldownRemaining,
+                thrustEnabled);
         }
     }
 }

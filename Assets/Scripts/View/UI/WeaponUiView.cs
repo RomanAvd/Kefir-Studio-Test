@@ -31,7 +31,7 @@ namespace Asteroids.View.View.UI
             _cooldownGroup.SetActive(result.CooldownRemaining > 0);
             _fillImage.fillAmount = (result.Cooldown - result.CooldownRemaining) / result.Cooldown;
             _cooldownText.text = result.CooldownRemaining.ToString("F1");
-            _chargesText.text = result.Charges.ToString();
+            _chargesText.text = $"X {result.Charges}";
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Asteroids.Controller.Ship
         float Speed { get; }
         float Rotation { get; }
         Vector2 Position { get; }
+        bool ThrustEnabled { get; }
     }
 }

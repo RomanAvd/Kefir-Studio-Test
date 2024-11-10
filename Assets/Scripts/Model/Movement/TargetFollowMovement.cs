@@ -21,8 +21,8 @@ namespace Asteriods.Model.Movement
 
         protected override void UpdatePositionInternal(float timeDelta)
         {
-            var direction = _target.TryGetPosition(out var position) ? (position - _position).normalized : _randomDirection;
-            _position += direction * _speed * timeDelta;
+            _direction = _target.TryGetPosition(out var position) ? (position - _position).normalized : _randomDirection;
+            _position += _direction * _speed * timeDelta;
         }
 
         public void SetTarget(IPositionProvider target)

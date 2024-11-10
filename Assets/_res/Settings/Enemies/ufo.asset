@@ -19,6 +19,6 @@ MonoBehaviour:
     <Type>k__BackingField: 2
     <DestroyOnCollision>k__BackingField: 1
     <SeamlessMovement>k__BackingField: 1
-    <RotateTowardsDirection>k__BackingField: 0
+    <RotateTowardsDirection>k__BackingField: 1
   <Score>k__BackingField: 10
   _nestedEnemies: []

@@ -14,6 +14,7 @@ namespace Asteroids.Controller.Ship
         public float Speed { get; }
         public float Rotation { get; }
         public Vector2 Position { get; }
+        public bool ThrustEnabled { get; }
         public ShipStatus Status { get; }
         public int Charges { get; }
         public float Cooldown { get; }
@@ -25,7 +26,8 @@ namespace Asteroids.Controller.Ship
                                 ShipStatus status,
                                 int charges,
                                 float cooldown,
-                                float cooldownRemaining)
+                                float cooldownRemaining,
+                                bool thrustEnabled)
         {
             Rotation = rotation;
             Position = position;
@@ -34,6 +36,7 @@ namespace Asteroids.Controller.Ship
             Charges = charges;
             Cooldown = cooldown;
             CooldownRemaining = cooldownRemaining;
+            ThrustEnabled = thrustEnabled;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Asteroids.Controller.Ship
                 _movingObjectsModel.Add(projectile.MovingObjectSettings, _shipModel.Position, Vector2.up.Rotate(_shipModel.RotationAngle));
             }
 
-            var result = ResultFactory.GetUpdateShipResult(_shipModel);
+            var result = ResultFactory.GetUpdateShipResult(_shipModel, _playerInput.ThrustPressed());
             _resultListener.SendResult(result);
         }
     }

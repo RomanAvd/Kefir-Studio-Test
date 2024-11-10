@@ -33,11 +33,11 @@ namespace Asteroids.View.Ship
                 return;
 
             _current = result.Status;
-                _collider.enabled = false;
+            gameObject.SetActive(true);
             switch (_current)
             {
                 case ShipStatus.None:
-                    _shipGroup.alpha = 0;
+                    gameObject.SetActive(false);
                     break;
                 case ShipStatus.Default:
                     _collider.enabled = true;
@@ -45,9 +45,10 @@ namespace Asteroids.View.Ship
                     break;
                 case ShipStatus.Invincible:
                     _shipGroup.alpha = 0.5f;
+                    _collider.enabled = false;
                     break;
                 case ShipStatus.Dead:
-                    _shipGroup.alpha = 0;
+                    gameObject.SetActive(false);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

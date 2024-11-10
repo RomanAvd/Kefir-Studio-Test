@@ -11,7 +11,7 @@ namespace Asteriods.Model.Movement
         public float Rotation { get; private set; }
         protected Vector2 _position;
         protected readonly float _speed;
-        protected readonly Vector2 _direction;
+        protected Vector2 _direction;
         private bool _rotateTowardsDirection;
         private readonly ISeamlessPositionHelper _seamlessPositionHelper;
 
