@@ -1,6 +1,6 @@
 ﻿using Asteroids.Common.Enums;
 
-namespace Asteroids.View.View.UI
+namespace Asteroids.View.UI
 {
     internal sealed class MainMenuView : UIStateView
     {

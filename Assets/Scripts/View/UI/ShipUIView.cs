@@ -4,7 +4,7 @@ using Asteroids.Controller.Ship;
 using TMPro;
 using UnityEngine;
 
-namespace Asteroids.View.View.UI
+namespace Asteroids.View.UI
 {
     internal sealed class ShipUIView : MonoBehaviour, IResultReceiver<IShipMovementResult>
     {

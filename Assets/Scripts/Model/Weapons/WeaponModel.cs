@@ -45,7 +45,6 @@ namespace Asteriods.Model.Weapons
             _chargeCooldownQueue.Enqueue(_weaponSettings.FireCooldown + (_chargeCooldownQueue.Count > 0 ? _chargeCooldownQueue.Last() : Time.time));
             projectile = _weaponSettings.Projectile;
             return true;
-
         }
 
         public void Update()

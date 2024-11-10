@@ -1,8 +1,6 @@
-﻿using Asteroids.Common.Observer;
-
-namespace Asteroids.Controller
+﻿namespace Asteroids.Controller
 {
-    public interface IObjectDestroyedResult : IResult
+    public interface IObjectDestroyedResult : IUpdateScoreResult
     {
         int Id { get; }
     }
@@ -10,10 +8,13 @@ namespace Asteroids.Controller
     internal sealed class ObjectDestroyedResult : IObjectDestroyedResult
     {
         public int Id { get; }
+        public int TotalScore { get; }
 
-        public ObjectDestroyedResult(int id)
+        public ObjectDestroyedResult(int id, int totalScore)
         {
             Id = id;
+            TotalScore = totalScore;
         }
+
     }
 }

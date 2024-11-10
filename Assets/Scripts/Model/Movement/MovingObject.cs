@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Asteriods.Model.Movement
+﻿namespace Asteriods.Model.Movement
 {
     public interface IMovingObject
     {

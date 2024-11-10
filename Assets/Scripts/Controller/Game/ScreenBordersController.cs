@@ -1,5 +1,4 @@
-﻿using System;
-using Asteriods.Model;
+﻿using Asteriods.Model;
 using Asteroids.Common.MonoInjection;
 using UnityEngine;
 

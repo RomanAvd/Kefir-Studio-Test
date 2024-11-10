@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Asteriods.Model;
 using Asteriods.Model.Movement;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.Observer;
+using Asteroids.Controller.Common;
 
 namespace Asteroids.Controller.MovingObjects
 {
@@ -38,10 +38,7 @@ namespace Asteroids.Controller.MovingObjects
                 _movingObjectsModel.Remove(objectToRemove);
             }
 
-            var movingObjectsData =
-                _movingObjectsModel.MovingObjects.Select(m => new MovingObjectData(m.MovementModel.Position, m.MovementModel.Rotation, m.Id, m.ResourceKey));
-            var result = new MovingObjectsResult(movingObjectsData, _toRemoveCache);
-            _resultListener.SendResult(result);
+            _resultListener.SendResult(ResultFactory.GetUpdateMovingObjectsResult(_movingObjectsModel, _toRemoveCache));
         }
     }
 }

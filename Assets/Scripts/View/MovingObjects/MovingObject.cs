@@ -1,9 +1,8 @@
-﻿using System;
-using Asteroids.Common.MonoInjection;
+﻿using Asteroids.Common.MonoInjection;
 using Asteroids.Controller;
 using UnityEngine;
 
-namespace Asteroids.View.View.MovingObjects
+namespace Asteroids.View.MovingObjects
 {
     internal interface IMovingObject : IGameEntity
     {

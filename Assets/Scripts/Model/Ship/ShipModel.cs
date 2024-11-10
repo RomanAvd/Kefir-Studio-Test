@@ -35,9 +35,10 @@ namespace Asteroids.Model.Ship
         private IWeaponModelInternal _secondaryWeapon;
 
         private Vector2 _speedVector;
+        private float _invincibilityDuration;
+
         private readonly IShipSettings _shipSettings;
         private readonly IScreenBorderModel _screenBorderModel;
-        private float _invincibilityDuration;
 
         public ShipModel(IShipSettings shipSettings, IScreenBorderModel screenBorderModel)
         {

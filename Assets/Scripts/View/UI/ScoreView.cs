@@ -1,10 +1,10 @@
 ﻿using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
-using Asteroids.Controller.CommonResults;
+using Asteroids.Controller;
 using TMPro;
 using UnityEngine;
 
-namespace Asteroids.View.View.UI
+namespace Asteroids.View.UI
 {
     internal sealed class ScoreView : MonoBehaviour, IResultReceiver<IUpdateScoreResult>
     {
@@ -16,6 +16,7 @@ namespace Asteroids.View.View.UI
         {
             observer.Bind(this);
         }
+
         public void OnResultReceived(IUpdateScoreResult result)
         {
             _text.text = result.TotalScore.ToString();

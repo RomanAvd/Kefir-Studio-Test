@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.MonoInjection;
 using UnityEngine;

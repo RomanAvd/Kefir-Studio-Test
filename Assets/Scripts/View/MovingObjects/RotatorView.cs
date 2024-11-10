@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Asteroids.View.View.MovingObjects
+namespace Asteroids.View.MovingObjects
 {
     internal sealed class RotatorView : MonoBehaviour
     {

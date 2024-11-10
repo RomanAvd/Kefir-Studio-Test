@@ -9,10 +9,12 @@ namespace Asteriods.Model.Movement
         public bool SeamlessMovement { get; }
         public bool DestroyOnCollision { get; }
         public float Rotation { get; private set; }
+
         protected Vector2 _position;
-        protected readonly float _speed;
         protected Vector2 _direction;
         private bool _rotateTowardsDirection;
+
+        protected readonly float _speed;
         private readonly ISeamlessPositionHelper _seamlessPositionHelper;
 
         public MovementModelBase(Vector2 position, Vector2 direction, IMovingObjectSettings settings, ISeamlessPositionHelper seamlessPositionHelper)
@@ -28,7 +30,7 @@ namespace Asteriods.Model.Movement
 
         protected abstract void UpdatePositionInternal(float timeDelta);
 
-        public Vector2 UpdatePosition(float timeDelta)
+        public void UpdatePosition(float timeDelta)
         {
             UpdatePositionInternal(timeDelta);
             if (_rotateTowardsDirection)
@@ -37,8 +39,6 @@ namespace Asteriods.Model.Movement
             }
             if (SeamlessMovement)
                 _position = _seamlessPositionHelper.UpdateSeamlessPosition(_position);
-            return _position;
         }
-
     }
 }

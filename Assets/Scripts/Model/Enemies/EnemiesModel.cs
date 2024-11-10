@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Asteriods.Model.Movement;
 using Asteriods.Model.Score;
-using Asteroids.Common;
-using Asteroids.Common.Enums;
 using Asteroids.Common.Settings;
 using Asteroids.Model.Ship;
 using UnityEngine;
@@ -12,7 +9,6 @@ namespace Asteriods.Model.Enemies
 {
     public interface IEnemiesModel
     {
-        IEnumerable<IEnemy> Enemies { get; }
         int EnemyCount { get; }
         void Spawn(IEnemySettings enemySettings, Vector2 position, Vector2 direction);
         bool TryDestroy(int id);
@@ -20,7 +16,6 @@ namespace Asteriods.Model.Enemies
 
     internal sealed class EnemiesModel : IEnemiesModel
     {
-        public IEnumerable<IEnemy> Enemies => _enemies.Values;
         public int EnemyCount => _enemies.Count;
         private readonly IMovingObjectsSpawner _movingObjectsModel;
         private readonly IShipModel _shipModel;

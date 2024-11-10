@@ -7,9 +7,9 @@ using Asteroids.View.ResourceLoading;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Asteroids.View.View.MovingObjects
+namespace Asteroids.View.MovingObjects
 {
-    internal sealed class MovingObjectsView : MonoBehaviour, IResultReceiver<IMovingObjectsResult>, IResultReceiver<IObjectDestroyedResult>
+    internal sealed class MovingObjectsView : MonoBehaviour, IResultReceiver<IUpdateMovingObjectsResult>, IResultReceiver<IObjectDestroyedResult>
     {
         private Dictionary<string, ObjectPool<IMovingObject>> _pools;
         private Dictionary<int, IMovingObject> _activeObjects;
@@ -25,7 +25,7 @@ namespace Asteroids.View.View.MovingObjects
         private void Initialize(IGameObjectFactory gameObjectFactory, IResultObserver observer)
         {
             _gameObjectFactory = gameObjectFactory;
-            observer.Bind<IMovingObjectsResult>(this);
+            observer.Bind<IUpdateMovingObjectsResult>(this);
             observer.Bind<IObjectDestroyedResult>(this);
         }
 
@@ -44,7 +44,7 @@ namespace Asteroids.View.View.MovingObjects
             _activeObjects.Remove(id);
         }
 
-        public void OnResultReceived(IMovingObjectsResult result)
+        public void OnResultReceived(IUpdateMovingObjectsResult result)
         {
             foreach (var removedObject in result.RemovedObjects)
             {
@@ -72,13 +72,12 @@ namespace Asteroids.View.View.MovingObjects
                 instance.UpdatePosition(activeObject.Position, activeObject.Rotation);
                 _activeObjects.Add(activeObject.Id, instance);
             }
-
         }
 
         private IMovingObject CreateInstance(MovingObjectData data)
         {
             var prefab = ResourceLoader.LoadMovingObject(data.ResourceKey);
-            var instance = _gameObjectFactory.Instantitiate(prefab, Vector3.zero, Quaternion.identity, transform);
+            var instance = _gameObjectFactory.Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
             instance.Setup(data.ResourceKey);
             return instance;
         }

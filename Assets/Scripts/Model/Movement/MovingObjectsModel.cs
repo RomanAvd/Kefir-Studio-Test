@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Asteroids.Common.Settings;
-using Asteroids.Model.Ship;
 using UnityEngine;
 
 namespace Asteriods.Model.Movement

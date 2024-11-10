@@ -1,4 +1,4 @@
-﻿using Asteroids.View.View.MovingObjects;
+﻿using Asteroids.View.MovingObjects;
 using UnityEngine;
 
 namespace Asteroids.View.ResourceLoading

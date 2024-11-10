@@ -3,10 +3,18 @@ using Asteroids.Common.Observer;
 
 namespace Asteroids.Controller.Game
 {
-    internal sealed class StartGameResult : StateResult
+    public interface IStartGameResult : IStateResult, IUpdateScoreResult
     {
-        public StartGameResult() : base(GameState.Game)
+
+    }
+
+    internal sealed class StartGameResult : StateResult, IStartGameResult
+    {
+        public int TotalScore { get; }
+
+        public StartGameResult(int totalScore) : base(GameState.Game)
         {
+            TotalScore = totalScore;
         }
     }
 }

@@ -29,6 +29,5 @@ namespace Asteriods.Model.Enemies
             Score = score;
             NestedEnemies = new List<IEnemySettings>(nestedEnemies);
         }
-
     }
 }

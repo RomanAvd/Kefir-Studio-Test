@@ -1,11 +1,11 @@
 ﻿using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
-using Asteroids.Controller.CommonResults;
+using Asteroids.Controller;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Asteroids.View.View.UI
+namespace Asteroids.View.UI
 {
     internal sealed class WeaponUiView : MonoBehaviour, IResultReceiver<IUpdateWeaponResult>
     {
@@ -18,7 +18,6 @@ namespace Asteroids.View.View.UI
 
         [SerializeField]
         private GameObject _cooldownGroup;
-
 
         [Inject]
         private void Initialize(IResultObserver observer)

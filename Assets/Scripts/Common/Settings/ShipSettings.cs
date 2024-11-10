@@ -31,11 +31,7 @@ namespace Asteroids.Common.Settings
         public float RotationSpeed { get; private set; }
         [field: SerializeField]
         public float SpawnInvincibilityDuration { get; private set; }
-
         public IWeaponSettings PrimaryWeapon => _primaryWeapon;
         public IWeaponSettings SecondaryWeapon => _secondaryWeapon;
-
-
-
     }
 }

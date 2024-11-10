@@ -16,7 +16,7 @@ namespace Asteriods.Model
 
     public sealed class ScreenBorderModel : IScreenBorderModel
     {
-        private static readonly Vector2 _outerBorderOffset = new Vector2(50, 50);
+        private static readonly Vector2 _outerBorderOffset = new (50, 50);
 
         private Vector2 _minBorder;
         private Vector2 _outerMinBorder;

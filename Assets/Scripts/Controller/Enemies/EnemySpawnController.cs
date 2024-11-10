@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Asteriods.Model;
 using Asteriods.Model.Enemies;
-using Asteroids.Common;
 using Asteroids.Common.Interfaces;
 using Asteroids.Common.Settings;
 using UnityEngine;

@@ -3,7 +3,7 @@ using Asteroids.Common.MonoInjection;
 using Asteroids.Common.Observer;
 using UnityEngine;
 
-namespace Asteroids.View.View.UI
+namespace Asteroids.View.UI
 {
     internal abstract class UIStateView : MonoBehaviour, IResultReceiver<IStateResult>
     {

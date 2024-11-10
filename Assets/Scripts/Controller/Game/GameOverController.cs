@@ -1,4 +1,5 @@
 ﻿using Asteroids.Common.Observer;
+using Asteroids.Controller.Common;
 using Asteroids.Model.Ship;
 
 namespace Asteroids.Controller.Game
@@ -22,7 +23,7 @@ namespace Asteroids.Controller.Game
         public void GameOver()
         {
             _shipModel.Die();
-            _resultListener.SendResult(new GameOverResult(_shipModel.Status));
+            _resultListener.SendResult(ResultFactory.GetGameOverResult(_shipModel));
         }
     }
 }

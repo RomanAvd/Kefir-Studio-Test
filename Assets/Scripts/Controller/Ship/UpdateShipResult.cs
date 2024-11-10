@@ -1,5 +1,4 @@
 using Asteroids.Common.Enums;
-using Asteroids.Controller.CommonResults;
 using UnityEngine;
 
 namespace Asteroids.Controller.Ship

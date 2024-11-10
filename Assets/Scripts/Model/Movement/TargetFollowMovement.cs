@@ -1,5 +1,4 @@
-﻿using Asteroids.Common;
-using Asteroids.Common.Settings;
+﻿using Asteroids.Common.Settings;
 using UnityEngine;
 
 namespace Asteriods.Model.Movement

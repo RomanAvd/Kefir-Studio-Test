@@ -24,7 +24,7 @@ namespace Asteroids.Controller.Game
         {
             _scoreModel.Reset();
             _shipModel.Reset();
-            _listener.SendResult(new StartGameResult());
+            _listener.SendResult(ResultFactory.GetStartGameResult(_scoreModel));
         }
     }
 }
