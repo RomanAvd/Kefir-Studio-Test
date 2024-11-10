@@ -11,6 +11,9 @@ namespace Asteroids.View.UI
         [SerializeField]
         private TextMeshProUGUI _text;
 
+        [SerializeField]
+        private string _prefix;
+
         [Inject]
         private void Initialize(IResultObserver observer)
         {
@@ -19,7 +22,7 @@ namespace Asteroids.View.UI
 
         public void OnResultReceived(IUpdateScoreResult result)
         {
-            _text.text = result.TotalScore.ToString();
+            _text.text = _prefix + result.TotalScore.ToString();
         }
     }
 }

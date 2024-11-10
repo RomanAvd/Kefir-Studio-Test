@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 7763327815327433810}
+  _prefix: 'Total score: '
 --- !u!1 &2300428249150947274
 GameObject:
   m_ObjectHideFlags: 0
