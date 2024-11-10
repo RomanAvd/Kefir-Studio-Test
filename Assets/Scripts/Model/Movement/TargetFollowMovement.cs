@@ -16,7 +16,7 @@ namespace Asteriods.Model.Movement
 
         public TargetFollowMovement(Vector2 position, Vector2 direction, IMovingObjectSettings settings, ISeamlessPositionHelper seamlessPositionHelper) : base(position, direction, settings, seamlessPositionHelper)
         {
-            _randomDirection = RandomHelper.RandomNormalizedVector();
+            _randomDirection = Random.insideUnitCircle;
         }
 
         protected override void UpdatePositionInternal(float timeDelta)

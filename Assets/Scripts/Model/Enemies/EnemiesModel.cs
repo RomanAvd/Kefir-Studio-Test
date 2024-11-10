@@ -56,7 +56,7 @@ namespace Asteriods.Model.Enemies
             _enemies.Remove(id);
             foreach (var nestedEnemy in enemy.NestedEnemies)
             {
-                Spawn(nestedEnemy, enemy.MovingObject.MovementModel.Position, RandomHelper.RandomNormalizedVector());
+                Spawn(nestedEnemy, enemy.MovingObject.MovementModel.Position, Random.insideUnitCircle);
             }
 
             return success;

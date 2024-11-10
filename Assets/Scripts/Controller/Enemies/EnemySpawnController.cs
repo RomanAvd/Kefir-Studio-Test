@@ -43,7 +43,7 @@ namespace Asteroids.Controller.Enemies
 
         private void SpawnRandomEnemy()
         {
-            _enemiesModel.Spawn(RollEnemy(), _screenBorderModel.GetRandomOffscreenPosition(), RandomHelper.RandomNormalizedVector());
+            _enemiesModel.Spawn(RollEnemy(), _screenBorderModel.GetRandomOffscreenPosition(), Random.insideUnitCircle);
             _newxtSpawnTime = Time.time + _enemySpawnSettings.SpawnDelay;
         }
 
